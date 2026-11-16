@@ -92,3 +92,7 @@ Repeat this block for `apple-on-device-permissive` and `apple-on-device-content-
 swift build
 AFM_PORT=11499 .build/debug/afm-server
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).
