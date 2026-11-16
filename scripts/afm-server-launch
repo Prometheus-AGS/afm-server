@@ -1,0 +1,18 @@
+#!/bin/bash
+# launchd entry point for afm-server.
+#
+# Uses AFM_API_KEY from the environment if set; otherwise reads just the
+# `export AFM_API_KEY=...` line from ~/.bash_profile (the profile itself is never
+# sourced), so the LaunchAgent plist never contains the key. Refuses to start
+# without a key.
+set -u
+if [ -z "${AFM_API_KEY:-}" ] && [ -r "$HOME/.bash_profile" ]; then
+  line="$(grep -E '^export AFM_API_KEY=' "$HOME/.bash_profile" 2>/dev/null | tail -1)"
+  if [ -n "$line" ]; then eval "$line"; fi
+fi
+if [ -z "${AFM_API_KEY:-}" ]; then
+  echo "afm-server-launch: AFM_API_KEY is not set and not found in ~/.bash_profile; refusing to start" >&2
+  exit 1
+fi
+export AFM_API_KEY
+exec "${AFM_SERVER_BIN:-$HOME/.local/bin/afm-server}"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>local.afm-server</string>
+  <key>ProgramArguments</key><array><string>__HOME__/.local/bin/afm-server-launch</string></array>
+  <key>EnvironmentVariables</key><dict>
+    <key>AFM_HOST</key><string>127.0.0.1</string>
+    <key>AFM_PORT</key><string>__PORT__</string>
+  </dict>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ThrottleInterval</key><integer>10</integer>
+  <key>ProcessType</key><string>Background</string>
+  <key>StandardOutPath</key><string>__HOME__/Library/Logs/afm-server.log</string>
+  <key>StandardErrorPath</key><string>__HOME__/Library/Logs/afm-server.log</string>
+</dict>
+</plist>
